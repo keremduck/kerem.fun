@@ -3,10 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AboutMe from "./components/AboutMe";
 import Github from "./components/Github";
+import Blogs from "./components/Blogs";
 
 function App() {
   const [data, setData] = useState([]);
   const [github, setGithub] = useState([]);
+  const [blog, setBlog] = useState([]);
 
   const getData = () => {
     axios
@@ -20,9 +22,16 @@ function App() {
       .then((res) => setGithub(res.data));
   };
 
+  const getBlogData = () => {
+    axios
+      .get("https://api.kerem.fun/api/blog/")
+      .then((res) => setBlog(res.data));
+  };
+
   useEffect(() => {
     getData();
     getGithubData();
+    getBlogData();
   }, []);
 
   return (
@@ -30,6 +39,7 @@ function App() {
       <Navbar discord={data} />
       <AboutMe discord={data} />
       <Github github={github} />
+      <Blogs blog={blog} />
       <div className="container mt-4"></div>
     </>
   );

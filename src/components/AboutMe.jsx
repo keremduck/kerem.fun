@@ -7,7 +7,11 @@ export default function AboutMe({ discord }) {
         {discord.map((value) => (
           <>
             <div className="col-sm-9">
-              <h3>Newbie front-end developer</h3>
+              <h3>
+                Newbie{" "}
+                <a className="text-info text-decoration-none">front-end</a>{" "}
+                developer
+              </h3>
               <p className="text-secondary">
                 I'm self-interested person who likes to improve myself and is
                 interested in software. 🙌
